@@ -1,0 +1,30 @@
+name: ttttttv1
+on: 
+  push :
+    branches: [ master ]  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ttttttv1
+        id: model
+        uses: nofx11/pycaret-git-actions@test2
+        with:
+          DATASET: "juice"
+          TARGET: "Purchase"
+          USECASE: "classification"
+      - name: Upload model.pkl
+        uses: actions/upload-artifact@v2
+        with: 
+          name: model
+          path: model.pkl
+      - name: Upload exp_github_logs.csv
+        uses: actions/upload-artifact@v2
+        with: 
+          name: experiment-logs
+          path: exp_github_logs.csv
+      - name: Upload logs.log
+        uses: actions/upload-artifact@v2
+        with: 
+          name: system-logs
+          path: logs.log
